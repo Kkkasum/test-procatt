@@ -12,6 +12,7 @@ import { useCartStore } from '@/store/useCartStore'
 export const ItemsPage: FC = () => {
 	const [activeId, setActiveId] = useState<number>()
 	const [text, setText] = useState<string>('Go to cart')
+	const itemsCart = useCartStore(state => state.items)
 	const addItemToCart = useCartStore(state => state.addItem)
 
 	const navigate = useNavigate()
@@ -52,30 +53,32 @@ export const ItemsPage: FC = () => {
 	return (
 		<Page back={false}>
 			<div className='flex flex-wrap gap-8 py-2 justify-center text-[10px]'>
-				{items.map(item => (
-					<div
-						key={item.id}
-						className={`flex flex-col items-center gap-2 p-2 max-w-44 w-44 rounded-xl bg-[#242D38] cursor-pointer hover:text-[#0097E9] duration-300 border-1 hover:border-[#0097E9] ${
-							activeId === item.id
-								? 'border-[#0097E9]'
-								: 'border-transparent'
-						}`}
-						onClick={() => onClick(item.id)}
-					>
-						<GiftLottie
-							lottieUrl={item.lottieUrl}
-							className='w-[144px] h-[144px]'
-						/>
+				{items
+					.filter(item => !itemsCart.includes(item))
+					.map(item => (
+						<div
+							key={item.id}
+							className={`flex flex-col items-center gap-2 p-2 max-w-44 w-44 rounded-xl bg-[#242D38] cursor-pointer hover:text-[#0097E9] duration-300 border-1 hover:border-[#0097E9] ${
+								activeId === item.id
+									? 'border-[#0097E9]'
+									: 'border-transparent'
+							}`}
+							onClick={() => onClick(item.id)}
+						>
+							<GiftLottie
+								lottieUrl={item.lottieUrl}
+								className='w-[144px] h-[144px]'
+							/>
 
-						<p className='flex items-center justify-between w-full'>
-							<span>{item.title}</span>
-							<span className='flex items-center gap-0.5 font-bold'>
-								{item.price}
-								<StarIcon width={12} height={12} />
-							</span>
-						</p>
-					</div>
-				))}
+							<p className='flex items-center justify-between w-full'>
+								<span>{item.title}</span>
+								<span className='flex items-center gap-0.5 font-bold'>
+									{item.price}
+									<StarIcon width={12} height={12} />
+								</span>
+							</p>
+						</div>
+					))}
 			</div>
 		</Page>
 	)

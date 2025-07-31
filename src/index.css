@@ -11,3 +11,9 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+@layer utilities {
+	.blurred {
+		filter: blur(2px) opacity(40%);
+	}
+}
