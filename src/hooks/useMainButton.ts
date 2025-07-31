@@ -10,9 +10,15 @@ interface Props {
 	text: string
 	onClick: () => void
 	isEnabled: boolean
+	isVisible?: boolean
 }
 
-export const useMainButton = ({ text, onClick, isEnabled }: Props) => {
+export const useMainButton = ({
+	text,
+	onClick,
+	isEnabled,
+	isVisible,
+}: Props) => {
 	useEffect(() => {
 		if (setMainButtonParams.isAvailable()) {
 			setMainButtonParams({
@@ -48,6 +54,14 @@ export const useMainButton = ({ text, onClick, isEnabled }: Props) => {
 			})
 		}
 	}, [isEnabled])
+
+	useEffect(() => {
+		if (setMainButtonParams.isAvailable()) {
+			setMainButtonParams({
+				isVisible,
+			})
+		}
+	}, [isVisible])
 
 	useEffect(() => {
 		if (onMainButtonClick.isAvailable()) {

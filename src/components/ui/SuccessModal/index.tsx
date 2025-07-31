@@ -80,7 +80,7 @@ export const SuccessModal: FC<Props> = ({ modalOpen, closeModal }) => {
 
 						<div className='flex items-center justify-center gap-3 text-lg font-semibold w-full'>
 							<button
-								className='bg-[#0097E9] hover:bg-[#0097E9]/40 duration-300 rounded-lg w-full px-2 py-3 max-h-[52px] mx-4'
+								className='bg-[#0097E9] hover:bg-[#0097E9]/40 duration-300 rounded-lg w-full px-2 py-3 max-h-[52px] mx-2'
 								onClick={closeModal}
 							>
 								Close

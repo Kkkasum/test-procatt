@@ -12,7 +12,7 @@ import { useMainButton } from '@/hooks/useMainButton'
 import { useCartStore } from '@/store/useCartStore'
 
 export const CartPage: FC = () => {
-	const [modalOpen, setModalOpen] = useState<boolean>(true)
+	const [modalOpen, setModalOpen] = useState<boolean>(false)
 	const items = useCartStore(state => state.items)
 	const { removeItem, clean: cleanCart } = useCartStore()
 
@@ -35,6 +35,7 @@ export const CartPage: FC = () => {
 		text: 'Purchase',
 		onClick: onMainButtonClick,
 		isEnabled: true,
+		isVisible: !modalOpen,
 	})
 
 	return (
