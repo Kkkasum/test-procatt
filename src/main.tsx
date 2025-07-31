@@ -1,21 +1,21 @@
-// import { retrieveLaunchParams } from '@telegram-apps/sdk-react'
+import { retrieveLaunchParams } from '@telegram-apps/sdk-react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import { App } from '@/components/App.tsx'
-// import init from '@/core/init.ts'
+import init from '@/core/init.ts'
 
 import './index.css'
 
-// import './mockEnv.ts'
+import './mockEnv.ts'
 
 const root = createRoot(document.getElementById('root')!)
 
 try {
-	// init(
-	// 	retrieveLaunchParams().tgWebAppStartParam === 'debug' ||
-	// 		import.meta.env.DEV
-	// )
+	init(
+		retrieveLaunchParams().tgWebAppStartParam === 'debug' ||
+			import.meta.env.DEV
+	)
 
 	root.render(
 		<StrictMode>
