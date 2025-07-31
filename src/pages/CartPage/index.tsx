@@ -1,5 +1,5 @@
 import { openTelegramLink } from '@telegram-apps/sdk-react'
-import { useState, type FC } from 'react'
+import { useEffect, useState, type FC } from 'react'
 
 import { Page } from '@/components/Page'
 import CrossIcon from '@/components/ui/CrossIcon'
@@ -12,6 +12,7 @@ import { useMainButton } from '@/hooks/useMainButton'
 import { useCartStore } from '@/store/useCartStore'
 
 export const CartPage: FC = () => {
+	const [isEnabled, setIsEnabled] = useState<boolean>(false)
 	const [modalOpen, setModalOpen] = useState<boolean>(false)
 	const items = useCartStore(state => state.items)
 	const { removeItem, clean: cleanCart } = useCartStore()
@@ -34,9 +35,17 @@ export const CartPage: FC = () => {
 	useMainButton({
 		text: 'Purchase',
 		onClick: onMainButtonClick,
-		isEnabled: items.length !== 0,
+		isEnabled: isEnabled,
 		isVisible: !modalOpen,
 	})
+
+	useEffect(() => {
+		if (items.length !== 0) {
+			setIsEnabled(true)
+		} else {
+			setIsEnabled(false)
+		}
+	}, [items])
 
 	return (
 		<>
