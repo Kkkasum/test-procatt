@@ -47,7 +47,7 @@ export const ItemsPage: FC = () => {
 	useMainButton({
 		text: text,
 		onClick: onMainButtonClick,
-		isEnabled: !!activeId,
+		isEnabled: true,
 	})
 
 	return (
