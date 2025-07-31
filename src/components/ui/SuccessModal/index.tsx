@@ -74,7 +74,7 @@ export const SuccessModal: FC<Props> = ({ modalOpen, closeModal }) => {
 							<button className='h-1 w-10 touch-none rounded-full bg-white' />
 						</div>
 
-						<div className='text-lg font-bold mt-10'>
+						<div className='flex items-center justify-center text-lg font-bold mt-10'>
 							<span>Successful Purchase!</span>
 						</div>
 

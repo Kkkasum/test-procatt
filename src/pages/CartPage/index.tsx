@@ -34,7 +34,7 @@ export const CartPage: FC = () => {
 	useMainButton({
 		text: 'Purchase',
 		onClick: onMainButtonClick,
-		isEnabled: true,
+		isEnabled: items.length !== 0,
 		isVisible: !modalOpen,
 	})
 
