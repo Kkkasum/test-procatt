@@ -43,7 +43,7 @@ export const CartPage: FC = () => {
 			<Page>
 				{items.length > 0 ? (
 					<div
-						className={`flex flex-col items-center w-full gap-2 m-1 ${
+						className={`flex flex-col items-center w-full gap-2 p-3 ${
 							modalOpen && 'blurred'
 						}`}
 					>

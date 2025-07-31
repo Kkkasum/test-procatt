@@ -10,7 +10,40 @@ interface ICartStore {
 }
 
 export const useCartStore = create<ICartStore>(set => ({
-	items: [],
+	items: [
+		{
+			id: 1,
+			title: 'Plush Pepe',
+			price: 100,
+			lottieUrl:
+				'https://nft.fragment.com/gift/plushpepe-1159.lottie.json',
+			tgUrl: 'https://t.me/nft/plushpepe-1159',
+		},
+		{
+			id: 2,
+			title: "Durov's Cap",
+			price: 200,
+			lottieUrl:
+				'https://nft.fragment.com/gift/durovscap-2301.lottie.json',
+			tgUrl: 'https://t.me/nft/durovscap-2301',
+		},
+		{
+			id: 3,
+			title: 'Swiss Watch',
+			price: 300,
+			lottieUrl:
+				'https://nft.fragment.com/gift/swisswatch-14824.lottie.json',
+			tgUrl: 'https://t.me/nft/swisswatch-14824',
+		},
+		{
+			id: 4,
+			title: 'Vintage Cigar',
+			price: 400,
+			lottieUrl:
+				'https://nft.fragment.com/gift/vintagecigar-8053.lottie.json',
+			tgUrl: 'https://t.me/nft/vintagecigar-8053',
+		},
+	],
 	addItem: item =>
 		set(state => ({ ...state, items: [...state.items, item] })),
 	removeItem: item =>
