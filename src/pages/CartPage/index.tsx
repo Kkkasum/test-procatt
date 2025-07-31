@@ -1,6 +1,7 @@
 import { openTelegramLink } from '@telegram-apps/sdk-react'
 import { type FC } from 'react'
 
+import { Page } from '@/components/Page'
 import CrossIcon from '@/components/ui/CrossIcon'
 import { DuckLottie } from '@/components/ui/DuckLottie'
 import { GiftLottie } from '@/components/ui/GiftLottie'
@@ -33,49 +34,55 @@ export const CartPage: FC = () => {
 		isEnabled: true,
 	})
 
-	return items.length > 0 ? (
-		<div className='flex flex-col items-center w-full gap-2 m-1'>
-			{items.map(item => (
-				<div
-					key={item.id}
-					className='flex items-center justify-start w-full p-2 bg-[#242D38] rounded-xl relative'
-				>
-					<div className='flex items-center justify-center gap-2'>
-						<GiftLottie
-							lottieUrl={item.lottieUrl}
-							className='w-[100px] h-[100px]'
-						/>
+	return (
+		<Page>
+			{items.length > 0 ? (
+				<div className='flex flex-col items-center w-full gap-2 m-1'>
+					{items.map(item => (
+						<div
+							key={item.id}
+							className='flex items-center justify-start w-full p-2 bg-[#242D38] rounded-xl relative'
+						>
+							<div className='flex items-center justify-center gap-2'>
+								<GiftLottie
+									lottieUrl={item.lottieUrl}
+									className='w-[100px] h-[100px]'
+								/>
 
-						<p className='flex flex-col gap-12 items-between'>
-							<span className='font-medium'>{item.title}</span>
-							<span className='flex items-center gap-0.5 font-bold'>
-								{item.price}
-								<StarIcon width={12} height={12} />
-							</span>
-						</p>
-					</div>
+								<p className='flex flex-col gap-12 items-between'>
+									<span className='font-medium'>
+										{item.title}
+									</span>
+									<span className='flex items-center gap-0.5 font-bold'>
+										{item.price}
+										<StarIcon width={12} height={12} />
+									</span>
+								</p>
+							</div>
 
-					<div
-						className='absolute right-12 top-2 cursor-pointer'
-						onClick={() => openTelegramLink(item.tgUrl)}
-					>
-						<InfoIcon />
-					</div>
+							<div
+								className='absolute right-12 top-2 cursor-pointer'
+								onClick={() => openTelegramLink(item.tgUrl)}
+							>
+								<InfoIcon />
+							</div>
 
-					<div
-						className='absolute right-2 top-2 cursor-pointer'
-						onClick={() => removeItem(item)}
-					>
-						<CrossIcon />
-					</div>
+							<div
+								className='absolute right-2 top-2 cursor-pointer'
+								onClick={() => removeItem(item)}
+							>
+								<CrossIcon />
+							</div>
+						</div>
+					))}
 				</div>
-			))}
-		</div>
-	) : (
-		<div className='flex flex-col items-center gap-2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-			<DuckLottie />
+			) : (
+				<div className='flex flex-col items-center gap-2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+					<DuckLottie />
 
-			<span className='font-bold text-xl'>Add items to cart</span>
-		</div>
+					<span className='font-bold text-xl'>Add items to cart</span>
+				</div>
+			)}
+		</Page>
 	)
 }
