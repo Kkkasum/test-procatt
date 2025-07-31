@@ -26,7 +26,7 @@ export const ItemsPage: FC = () => {
 			addItemToCart(item)
 			setActiveId(undefined)
 		} else {
-			setText('Add to cart')
+			setText(() => 'Add to cart')
 		}
 	}
 
