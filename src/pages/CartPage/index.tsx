@@ -36,7 +36,7 @@ export const CartPage: FC = () => {
 		text: 'Purchase',
 		onClick: onMainButtonClick,
 		isEnabled: isEnabled,
-		isVisible: !modalOpen,
+		isVisible: !modalOpen && isEnabled,
 	})
 
 	useEffect(() => {
